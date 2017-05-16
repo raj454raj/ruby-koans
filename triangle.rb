@@ -14,6 +14,17 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  side_sum = a + b + c
+
+  # Side length should be positive
+  if [a, b, c].any? { |side| side <= 0}
+    raise TriangleError
+  end
+
+  if a >= b + c or b >= a + c or c >= a + b
+    raise TriangleError
+  end
+
   if a == b and b == c
     :equilateral
   elsif a == b or b == c or c == a
